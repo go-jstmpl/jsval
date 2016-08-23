@@ -5,4 +5,5 @@ machine:
 dependencies:
   post:
     - ./node_modules/.bin/typings install
+    - cd node_modules/typescript-simple; npm run build
     - npm build
