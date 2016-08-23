@@ -1,4 +1,4 @@
-# ts-jsvalidator
+# ts-jsvalidator [![CircleCI](https://circleci.com/gh/go-jstmpl/ts-jsvalidator.svg?style=svg)](https://circleci.com/gh/go-jstmpl/ts-jsvalidator)
 
 Validators based on JSON Schema in TypeScript.
 
