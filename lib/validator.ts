@@ -8,10 +8,10 @@ export interface IValidationError<T> {
 }
 
 export class MaximumValidator implements IValidator<number> {
-  constructor(public maximum: number, public exclude: boolean) { }
+  constructor(public maximum: number, public exclusive: boolean) { }
 
   public validate(value: number): IValidationError<number> {
-    if (!this.exclude) {
+    if (!this.exclusive) {
       if (value <= this.maximum) {
         return;
       }

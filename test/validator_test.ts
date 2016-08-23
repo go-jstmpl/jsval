@@ -5,7 +5,7 @@ import {MaximumValidator} from "../lib/validator";
 describe("jsvalidator", () => {
   describe("maximum", () => {
 
-    describe("without exclude", () => {
+    describe("without exclusive", () => {
 
       it(`should be valid if the input value is lower than, or equal to the maximum value`, () => {
         const validator = new MaximumValidator(100, false);
@@ -30,7 +30,7 @@ describe("jsvalidator", () => {
 
     });
 
-    describe("with exclude", () => {
+    describe("with exclusive", () => {
 
       it(`should be valid if the input value is strictly lower than the maximum value`, () => {
         const validator = new MaximumValidator(100, true);
