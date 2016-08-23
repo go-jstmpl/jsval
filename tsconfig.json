@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": true
+  },
+  "files": [
+    "typings/index.d.ts",
+    "lib/index.ts",
+    "test/index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

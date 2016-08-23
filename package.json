@@ -1,0 +1,30 @@
+{
+  "name": "jsvalidator",
+  "version": "0.0.1",
+  "description": "Validators based on JSON Schema in TypeScript",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "test": "./node_modules/.bin/mocha --compilers ts:espower-typescript/guess test/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/go-jstmpl/ts-jsvalidator.git"
+  },
+  "author": "Daisuke Mino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/go-jstmpl/ts-jsvalidator/issues"
+  },
+  "homepage": "https://github.com/go-jstmpl/ts-jsvalidator#readme",
+  "devDependencies": {
+    "espower-typescript": "^5.0.1",
+    "mocha": "^3.0.2",
+    "power-assert": "^1.4.1",
+    "typescript": "^1.8.10",
+    "typescript-simple": "git://github.com/uncovertruth/typescript-simple.git#fix/file-text"
+  }
+}
