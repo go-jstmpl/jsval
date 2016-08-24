@@ -1,7 +1,7 @@
 import {
   IValidationError,
   IValidator,
-} from "./interfaces";
+} from "../interfaces";
 
 export interface IMaximumValidatorDefinition {
   maximum: number;
@@ -9,7 +9,7 @@ export interface IMaximumValidatorDefinition {
 }
 
 export class MaximumValidator implements IValidator<number, IMaximumValidatorDefinition> {
-  constructor(public definition: IMaximumValidatorDefinition) { }
+  constructor(public definition: IMaximumValidatorDefinition) {}
 
   public validate(input: number): IValidationError<number, IMaximumValidatorDefinition> {
     if (!this.definition.exclusive) {
