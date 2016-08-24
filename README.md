@@ -10,13 +10,6 @@ Clone this repository.
 
 Create validator file with go-jstmpl and call functions implemented in this packaged.
 
-## Build
-
-```
-npm install
-typings install
-```
-
 ## Contribution
 
 1. Fork ([https://github.com/go-jstmpl/ts-jsvalidator/fork](https://github.com/go-jstmpl/ts-jsvalidator/fork))
