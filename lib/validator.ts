@@ -1,32 +1,38 @@
-export interface IValidator<T> {
-  validate: (value: T) => IValidationError<T>;
+export interface IValidator<T, U> {
+  definition: U;
+  validate: (input: T) => IValidationError<T, U>;
 }
 
-export interface IValidationError<T> {
-  value: T;
-  validator: IValidator<T>;
+export interface IValidationError<T, U> {
+  definition: U;
+  input: T;
 }
 
-export class MaximumValidator implements IValidator<number> {
-  constructor(public maximum: number, public exclusive: boolean) { }
+export interface IMaximumValidatorDefinition {
+  maximum: number;
+  exclusive: boolean;
+}
 
-  public validate(value: number): IValidationError<number> {
-    if (!this.exclusive) {
-      if (value <= this.maximum) {
+export class MaximumValidator implements IValidator<number, IMaximumValidatorDefinition> {
+  constructor(public definition: IMaximumValidatorDefinition) { }
+
+  public validate(input: number): IValidationError<number, IMaximumValidatorDefinition> {
+    if (!this.definition.exclusive) {
+      if (input <= this.definition.maximum) {
         return;
       }
       return {
-        value,
-        validator: this,
+        input,
+        definition: this.definition,
       };
     }
 
-    if (value < this.maximum) {
+    if (input < this.definition.maximum) {
       return;
     }
     return {
-      value,
-      validator: this,
+      input,
+      definition: this.definition,
     };
   }
 }
@@ -62,11 +68,11 @@ export class EnumValidator implements IValidator<string> {
     }
   }
 
-  public validate(value: string): IValidationError<string> {
+  public validate(input: string): IValidationError<string> {
     this.enumurate.forEach((e) => {
-      if (e !== value) {
+      if (e !== input) {
         return {
-          value,
+          input,
           validator: this,
         };
       }

@@ -1,6 +1,8 @@
 import * as assert from "power-assert";
 
-import {MaximumValidator} from "../lib/validator";
+import {
+  MaximumValidator,
+} from "../lib/validator";
 
 describe("jsvalidator", () => {
   describe("maximum", () => {
@@ -8,23 +10,30 @@ describe("jsvalidator", () => {
     describe("without exclusive", () => {
 
       it(`should be valid if the input value is lower than, or equal to the maximum value`, () => {
-        const validator = new MaximumValidator(100, false);
+        const definition = {
+          maximum: 100,
+          exclusive: false,
+        };
+        const validator = new MaximumValidator(definition);
         [
           {
             input: 99,
-            expected: true,
+            expected: null,
           },
           {
             input: 100,
-            expected: true,
+            expected: null,
           },
           {
             input: 101,
-            expected: false,
+            expected: {
+              definition,
+              input: 101,
+            },
           },
         ].forEach(({input, expected}) => {
-          const actual = validator.validate(input) == null;
-          assert(actual === expected);
+          const actual = validator.validate(input);
+          assert.deepEqual(actual, expected);
         });
       });
 
@@ -33,23 +42,33 @@ describe("jsvalidator", () => {
     describe("with exclusive", () => {
 
       it(`should be valid if the input value is strictly lower than the maximum value`, () => {
-        const validator = new MaximumValidator(100, true);
+        const definition = {
+          maximum: 100,
+          exclusive: false,
+        };
+        const validator = new MaximumValidator(definition);
         [
           {
             input: 99,
-            expected: true,
+            expected: null,
           },
           {
             input: 100,
-            expected: false,
+            expected: {
+              definition,
+              input: 100,
+            },
           },
           {
             input: 101,
-            expected: false,
+            expected: {
+              definition,
+              input: 100,
+            },
           },
         ].forEach(({input, expected}) => {
-          const actual = validator.validate(input) == null;
-          assert(actual === expected);
+          const actual = validator.validate(input);
+          assert.deepEqual(actual, expected);
         });
       });
 
