@@ -1,11 +1,9 @@
 import * as assert from "power-assert";
 
-import {
-  MaximumValidator,
-} from "../lib/validator";
+import {MaximumValidator} from "../lib/validators/maximum";
 
-describe("jsvalidator", () => {
-  describe("maximum", () => {
+describe("MaximumValidator", () => {
+  describe("validate()", () => {
 
     describe("without exclusive", () => {
 
@@ -18,11 +16,11 @@ describe("jsvalidator", () => {
         [
           {
             input: 99,
-            expected: null,
+            expected: undefined,
           },
           {
             input: 100,
-            expected: null,
+            expected: undefined,
           },
           {
             input: 101,
@@ -44,13 +42,13 @@ describe("jsvalidator", () => {
       it(`should be valid if the input value is strictly lower than the maximum value`, () => {
         const definition = {
           maximum: 100,
-          exclusive: false,
+          exclusive: true,
         };
         const validator = new MaximumValidator(definition);
         [
           {
             input: 99,
-            expected: null,
+            expected: undefined,
           },
           {
             input: 100,
@@ -63,7 +61,7 @@ describe("jsvalidator", () => {
             input: 101,
             expected: {
               definition,
-              input: 100,
+              input: 101,
             },
           },
         ].forEach(({input, expected}) => {
@@ -75,5 +73,4 @@ describe("jsvalidator", () => {
     });
 
   });
-
 });
