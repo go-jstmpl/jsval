@@ -1,5 +1,5 @@
 {
-  "name": "jsvalidator",
+  "name": "jsval",
   "version": "0.0.1",
   "description": "Validators based on JSON Schema in TypeScript",
   "main": "lib/index.js",
