@@ -7,11 +7,13 @@ import {
 } from "../interfaces";
 
 export interface IMaxLengthValidatorDefinition {
+  type?: string;
   maxLength: number;
 }
 
 export class MaxLengthValidator implements IValidator<string, IMaxLengthValidatorDefinition> {
   constructor(public definition: IMaxLengthValidatorDefinition) {
+    this.definition.type = "max_length";
     if (this.definition.maxLength < 0) {
       throw new NoLengthError(`the max length should be greater than, or equal to, 0`);
     }

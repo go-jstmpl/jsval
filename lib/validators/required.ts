@@ -8,11 +8,13 @@ import {
 } from "../interfaces";
 
 export interface IRequiredValidatorDefinition {
+  type?: string;
   required: string[];
 }
 
 export class RequiredValidator implements IValidator<any, IRequiredValidatorDefinition> {
   constructor(public definition: IRequiredValidatorDefinition) {
+    this.definition.type = "required";
     const {required} = this.definition;
     const len = required.length;
     if (len === 0) {

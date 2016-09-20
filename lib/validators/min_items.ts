@@ -7,11 +7,13 @@ import {
 } from "../interfaces";
 
 export interface IMinItemsValidatorDefinition {
+  type?: string;
   minItems: number;
 }
 
 export class MinItemsValidator implements IValidator<any[], IMinItemsValidatorDefinition> {
   constructor(public definition: IMinItemsValidatorDefinition) {
+    this.definition.type = "min_items";
     const {minItems} = this.definition;
     if (minItems < 0) {
      throw new NoLengthError(`the value of minItems should be greater than, or equal to, 0`);

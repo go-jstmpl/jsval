@@ -8,6 +8,7 @@ import {
 } from "../interfaces";
 
 export interface IPatternValidatorDefinition {
+  type?: string;
   pattern: string;
 }
 
@@ -15,6 +16,7 @@ export class PatternValidator implements IValidator<string, IPatternValidatorDef
   private regExp: RegExp;
 
   constructor(public definition: IPatternValidatorDefinition) {
+    this.definition.type = "pattern";
     const {pattern} = this.definition;
     if (pattern === "") {
       throw new EmptyError(`the pattern should not be empty`);

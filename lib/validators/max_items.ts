@@ -7,11 +7,13 @@ import {
 } from "../interfaces";
 
 export interface IMaxItemsValidatorDefinition {
+  type?: string;
   maxItems: number;
 }
 
 export class MaxItemsValidator implements IValidator<any[], IMaxItemsValidatorDefinition> {
   constructor(public definition: IMaxItemsValidatorDefinition) {
+    this.definition.type = "max_items";
     const {maxItems} = this.definition;
     if (maxItems < 0) {
      throw new NoLengthError(`the value of maxItems should be greater than, or equal to, 0`);
