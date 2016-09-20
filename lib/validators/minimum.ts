@@ -4,12 +4,15 @@ import {
 } from "../interfaces";
 
 export interface IMinimumValidatorDefinition {
+  type?: string;
   minimum: number;
   exclusive: boolean;
 }
 
 export class MinimumValidator implements IValidator<number, IMinimumValidatorDefinition> {
-  constructor(public definition: IMinimumValidatorDefinition) {}
+  constructor(public definition: IMinimumValidatorDefinition) {
+    this.definition.type = "minimum";
+  }
 
   public validate(input: number): IValidationError<number, IMinimumValidatorDefinition> {
     if (!this.definition.exclusive) {

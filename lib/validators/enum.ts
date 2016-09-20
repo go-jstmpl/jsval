@@ -8,11 +8,13 @@ import {
 } from "../interfaces";
 
 export interface IEnumValidatorDefinition {
+  type?: string;
   enumerate: string[];
 }
 
 export class EnumValidator implements IValidator<string, IEnumValidatorDefinition> {
   constructor(public definition: IEnumValidatorDefinition) {
+    this.definition.type = "enum";
     const {enumerate} = this.definition;
     const len = enumerate.length;
     if (len === 0) {

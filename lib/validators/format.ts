@@ -7,6 +7,7 @@ import {
 } from "../interfaces";
 
 export interface IFormatValidatorDefinition {
+  type?: string;
   format: string;
 }
 
@@ -16,6 +17,7 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
   private static rUri: RegExp = /^[0-9a-zA-Z]+:\/\/.+$/;
 
   constructor(public definition: IFormatValidatorDefinition) {
+    this.definition.type = "format";
     const {format} = this.definition;
     switch (format) {
       case "date-time":
