@@ -4,10 +4,10 @@ import {
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IMaxItemsValidatorDefinition {
-  type?: string;
+export interface IMaxItemsValidatorDefinition extends IValidatorDefinition {
   maxItems: number;
 }
 

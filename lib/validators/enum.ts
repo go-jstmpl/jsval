@@ -5,10 +5,10 @@ import {
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IEnumValidatorDefinition {
-  type?: string;
+export interface IEnumValidatorDefinition extends IValidatorDefinition {
   enumerate: string[];
 }
 

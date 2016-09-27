@@ -5,10 +5,10 @@ import {
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IRequiredValidatorDefinition {
-  type?: string;
+export interface IRequiredValidatorDefinition extends IValidatorDefinition {
   required: string[];
 }
 

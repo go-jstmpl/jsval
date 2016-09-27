@@ -5,10 +5,10 @@ import {
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IPatternValidatorDefinition {
-  type?: string;
+export interface IPatternValidatorDefinition extends IValidatorDefinition {
   pattern: string;
 }
 

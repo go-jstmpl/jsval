@@ -4,10 +4,10 @@ import {
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IFormatValidatorDefinition {
-  type?: string;
+export interface IFormatValidatorDefinition extends IValidatorDefinition {
   format: string;
 }
 

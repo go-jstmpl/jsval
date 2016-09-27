@@ -4,10 +4,10 @@ import {
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IMinItemsValidatorDefinition {
-  type?: string;
+export interface IMinItemsValidatorDefinition extends IValidatorDefinition {
   minItems: number;
 }
 

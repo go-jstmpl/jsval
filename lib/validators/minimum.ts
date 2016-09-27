@@ -1,10 +1,10 @@
 import {
   IValidationError,
   IValidator,
+  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IMinimumValidatorDefinition {
-  type?: string;
+export interface IMinimumValidatorDefinition extends IValidatorDefinition {
   minimum: number;
   exclusive: boolean;
 }
