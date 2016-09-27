@@ -1,10 +1,10 @@
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
-  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IMinimumValidatorDefinition extends IValidatorDefinition {
+export interface IMinimumValidatorDefinition extends IBaseValidatorDefinition {
   minimum: number;
   exclusive: boolean;
 }

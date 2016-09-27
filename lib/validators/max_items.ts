@@ -2,12 +2,12 @@ import {
   NoLengthError,
 } from "../errors";
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
-  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IMaxItemsValidatorDefinition extends IValidatorDefinition {
+export interface IMaxItemsValidatorDefinition extends IBaseValidatorDefinition {
   maxItems: number;
 }
 

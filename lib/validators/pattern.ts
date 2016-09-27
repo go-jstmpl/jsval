@@ -3,12 +3,12 @@ import {
   InvalidPatternError,
 } from "../errors";
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
-  IValidatorDefinition,
 } from "../interfaces";
 
-export interface IPatternValidatorDefinition extends IValidatorDefinition {
+export interface IPatternValidatorDefinition extends IBaseValidatorDefinition {
   pattern: string;
 }
 
