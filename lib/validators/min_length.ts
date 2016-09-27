@@ -2,12 +2,12 @@ import {
   NoLengthError,
 } from "../errors";
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
 } from "../interfaces";
 
-export interface IMinLengthValidatorDefinition {
-  type?: string;
+export interface IMinLengthValidatorDefinition extends IBaseValidatorDefinition {
   minLength: number;
 }
 

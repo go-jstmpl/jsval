@@ -3,12 +3,12 @@ import {
   EmptyError,
 } from "../errors";
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
 } from "../interfaces";
 
-export interface IEnumValidatorDefinition {
-  type?: string;
+export interface IEnumValidatorDefinition extends IBaseValidatorDefinition {
   enumerate: string[];
 }
 

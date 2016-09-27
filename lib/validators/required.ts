@@ -3,12 +3,12 @@ import {
   EmptyError,
 } from "../errors";
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
 } from "../interfaces";
 
-export interface IRequiredValidatorDefinition {
-  type?: string;
+export interface IRequiredValidatorDefinition extends IBaseValidatorDefinition {
   required: string[];
 }
 

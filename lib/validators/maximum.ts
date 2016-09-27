@@ -1,10 +1,10 @@
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
 } from "../interfaces";
 
-export interface IMaximumValidatorDefinition {
-  type?: string;
+export interface IMaximumValidatorDefinition extends IBaseValidatorDefinition {
   maximum: number;
   exclusive: boolean;
 }

@@ -2,12 +2,12 @@ import {
   InvalidFormatError,
 } from "../errors";
 import {
+  IBaseValidatorDefinition,
   IValidationError,
   IValidator,
 } from "../interfaces";
 
-export interface IFormatValidatorDefinition {
-  type?: string;
+export interface IFormatValidatorDefinition extends IBaseValidatorDefinition {
   format: string;
 }
 
