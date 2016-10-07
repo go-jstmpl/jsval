@@ -13,7 +13,39 @@ describe("FormatValidator", () => {
       const validator = new FormatValidator(definition);
       [
         {
-          input: "2016-07-01T16:00:00Z",
+          input: "2016-10-07T16:58:37Z",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37+09:00",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37-09:00",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37.091Z",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37.091+09:00",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37.091-09:00",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37.091232123Z",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37.091232123+09:00",
+          expected: undefined,
+        },
+        {
+          input: "2016-10-07T16:58:37.091232123-09:00",
           expected: undefined,
         },
         {
