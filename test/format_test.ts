@@ -284,6 +284,10 @@ describe("FormatValidator", () => {
           expected: undefined,
         },
         {
+          input: "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+          expected: undefined,
+        },
+        {
           input: "password",
           expected: {
             input: "password",
