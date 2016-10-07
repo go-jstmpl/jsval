@@ -24,6 +24,7 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
       case "email":
       case "hostname":
       case "uri":
+      case "password-0Aa":
         return;
       default:
         throw new InvalidFormatError(`the format is not found`);
@@ -38,19 +39,19 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
     };
     switch (format) {
 
-      case "date-time":
+      case "date-time": {
         if (FormatValidator.rDateTime.test(input)) {
           return;
         }
         break;
-
-      case "email":
+      }
+      case "email": {
         if (FormatValidator.rEmail.test(input)) {
           return;
         }
         break;
-
-      case "hostname":
+      }
+      case "hostname": {
         // stolen from https://golang.org/src/net/dnsclient.go
         const len = input.length;
         if (len === 0) {
@@ -94,12 +95,40 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
           break;
         }
         return;
-
-      case "uri":
+      }
+      case "uri": {
         if (FormatValidator.rUri.test(input)) {
           return;
         }
         break;
+      }
+      case "password-0Aa": {
+        let large = false;
+        let small = false;
+        let num = false;
+        for (let i = 0; i < input.length; i++) {
+          const c = input.charAt(i);
+          switch (true) {
+            case "0" <= c && c <= "9":
+              num = true;
+              continue;
+            case "A" <= c && c <= "Z":
+              large = true;
+              continue;
+            case "a" <= c && c <= "z":
+              small = true;
+              continue;
+            case "!" <= c && c <= "~":
+              continue;
+            default:
+              return invalid;
+          }
+        }
+        if (large && small && num) {
+          return;
+        }
+        return invalid;
+      }
 
     }
     return invalid;

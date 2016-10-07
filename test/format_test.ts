@@ -157,6 +157,172 @@ describe("FormatValidator", () => {
         assert.deepEqual(actual, expected);
       });
     });
+    it(`should be valid if the input value matches the password-0Aa format`, () => {
+      const definition = {
+        format: "password-0Aa",
+      };
+      const validator = new FormatValidator(definition);
+      [
+        {
+          input: "0Aa",
+          expected: undefined,
+        },
+        {
+          input: "0aA",
+          expected: undefined,
+        },
+        {
+          input: "A0a",
+          expected: undefined,
+        },
+        {
+          input: "Aa0",
+          expected: undefined,
+        },
+        {
+          input: "a0A",
+          expected: undefined,
+        },
+        {
+          input: "aA0",
+          expected: undefined,
+        },
+        {
+          input: "!0Aa",
+          expected: undefined,
+        },
+        {
+          input: "!0aA",
+          expected: undefined,
+        },
+        {
+          input: "!A0a",
+          expected: undefined,
+        },
+        {
+          input: "!Aa0",
+          expected: undefined,
+        },
+        {
+          input: "!a0A",
+          expected: undefined,
+        },
+        {
+          input: "!aA0",
+          expected: undefined,
+        },
+        {
+          input: "0!Aa",
+          expected: undefined,
+        },
+        {
+          input: "0!aA",
+          expected: undefined,
+        },
+        {
+          input: "0A!a",
+          expected: undefined,
+        },
+        {
+          input: "0Aa!",
+          expected: undefined,
+        },
+        {
+          input: "0a!A",
+          expected: undefined,
+        },
+        {
+          input: "0aA!",
+          expected: undefined,
+        },
+        {
+          input: "A!0a",
+          expected: undefined,
+        },
+        {
+          input: "A!a0",
+          expected: undefined,
+        },
+        {
+          input: "A0!a",
+          expected: undefined,
+        },
+        {
+          input: "A0a!",
+          expected: undefined,
+        },
+        {
+          input: "Aa!0",
+          expected: undefined,
+        },
+        {
+          input: "Aa0!",
+          expected: undefined,
+        },
+        {
+          input: "a!0A",
+          expected: undefined,
+        },
+        {
+          input: "a!A0",
+          expected: undefined,
+        },
+        {
+          input: "a0!A",
+          expected: undefined,
+        },
+        {
+          input: "a0A!",
+          expected: undefined,
+        },
+        {
+          input: "aA!0",
+          expected: undefined,
+        },
+        {
+          input: "aA0!",
+          expected: undefined,
+        },
+        {
+          input: "password",
+          expected: {
+            input: "password",
+            definition,
+          },
+        },
+        {
+          input: "PASSWORD",
+          expected: {
+            input: "PASSWORD",
+            definition,
+          },
+        },
+        {
+          input: "Password",
+          expected: {
+            input: "Password",
+            definition,
+          },
+        },
+        {
+          input: "passw0rd",
+          expected: {
+            input: "passw0rd",
+            definition,
+          },
+        },
+        {
+          input: "PASSW0RD",
+          expected: {
+            input: "PASSW0RD",
+            definition,
+          },
+        },
+      ].forEach(({input, expected}) => {
+        const actual = validator.validate(input);
+        assert.deepEqual(actual, expected);
+      });
+    });
 
   });
 
