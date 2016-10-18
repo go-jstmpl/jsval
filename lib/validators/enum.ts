@@ -8,33 +8,31 @@ import {
   IValidator,
 } from "../interfaces";
 
-export interface IEnumValidatorDefinition extends IBaseValidatorDefinition {
-  enumerate: string[];
+export interface IEnumValidatorDefinition<T> extends IBaseValidatorDefinition {
+  enum: T[];
 }
 
-export class EnumValidator implements IValidator<string, IEnumValidatorDefinition> {
-  constructor(public definition: IEnumValidatorDefinition) {
+export class EnumValidator<T> implements IValidator<{}, IEnumValidatorDefinition<T>> {
+  constructor(public definition: IEnumValidatorDefinition<T>) {
     this.definition.type = "enum";
-    const {enumerate} = this.definition;
-    const len = enumerate.length;
+    const len = this.definition.enum.length;
     if (len === 0) {
-      throw new EmptyError(`the enumerate should have at least one element`);
+      throw new EmptyError(`the enum should have at least one element`);
     }
 
     for (let i = 0; i < len - 1; i++) {
-      const e = enumerate[i];
+      const e = this.definition.enum[i];
       for (let j = i + 1; j < len; j++) {
-        if (enumerate[j] === e) {
-          throw new DuplicationError(`the elements of enumerate should not be duplicated`);
+        if (this.definition.enum[j] === e) {
+          throw new DuplicationError(`the elements of enum should not be duplicated`);
         }
       }
     }
   }
 
-  public validate(input: string): IValidationError<string, IEnumValidatorDefinition> {
-    const {enumerate} = this.definition;
-    for (let i = 0; i < enumerate.length; i++) {
-      const e = enumerate[i];
+  public validate(input: T): IValidationError<T, IEnumValidatorDefinition<T>> {
+    for (let i = 0; i < this.definition.enum.length; i++) {
+      const e = this.definition.enum[i];
       if (e === input) {
         return;
       }
