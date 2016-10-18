@@ -3,6 +3,7 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
+  IHasLength,
   IValidationError,
   IValidator,
 } from "../interfaces";
@@ -11,7 +12,7 @@ export interface IMinItemsValidatorDefinition extends IBaseValidatorDefinition {
   minItems: number;
 }
 
-export class MinItemsValidator implements IValidator<any[], IMinItemsValidatorDefinition> {
+export class MinItemsValidator implements IValidator<any, IMinItemsValidatorDefinition> {
   constructor(public definition: IMinItemsValidatorDefinition) {
     this.definition.type = "min_items";
     const {minItems} = this.definition;
@@ -20,7 +21,7 @@ export class MinItemsValidator implements IValidator<any[], IMinItemsValidatorDe
     }
   }
 
-  public validate(input: any[]): IValidationError<any[], IMinItemsValidatorDefinition> {
+  public validate(input: IHasLength): IValidationError<any, IMinItemsValidatorDefinition> {
     if (input.length >= this.definition.minItems) {
       return;
     }

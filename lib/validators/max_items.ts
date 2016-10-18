@@ -3,6 +3,7 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
+  IHasLength,
   IValidationError,
   IValidator,
 } from "../interfaces";
@@ -11,7 +12,7 @@ export interface IMaxItemsValidatorDefinition extends IBaseValidatorDefinition {
   maxItems: number;
 }
 
-export class MaxItemsValidator implements IValidator<any[], IMaxItemsValidatorDefinition> {
+export class MaxItemsValidator implements IValidator<any, IMaxItemsValidatorDefinition> {
   constructor(public definition: IMaxItemsValidatorDefinition) {
     this.definition.type = "max_items";
     const {maxItems} = this.definition;
@@ -20,7 +21,7 @@ export class MaxItemsValidator implements IValidator<any[], IMaxItemsValidatorDe
     }
   }
 
-  public validate(input: any[]): IValidationError<any[], IMaxItemsValidatorDefinition> {
+  public validate(input: IHasLength): IValidationError<any, IMaxItemsValidatorDefinition> {
     if (input.length <= this.definition.maxItems) {
       return;
     }

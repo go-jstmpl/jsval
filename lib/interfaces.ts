@@ -21,7 +21,7 @@ export interface IBaseValidatorDefinition {
 }
 
 export type IValidatorDefinition = (
-  IEnumValidatorDefinition |
+  IEnumValidatorDefinition<{}> |
   IFormatValidatorDefinition |
   IMaxItemsValidatorDefinition |
   IMaxLengthValidatorDefinition |
@@ -36,4 +36,8 @@ export type IValidatorDefinition = (
 export interface IValidationError<T, U> {
   definition: U;
   input: T;
+}
+
+export interface IHasLength {
+  length: number;
 }
