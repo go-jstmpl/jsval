@@ -9,26 +9,26 @@ import {
 describe("EnumValidator", () => {
   describe("constructor()", () => {
 
-    it(`should throw error if the enumerate is empty or the some of enumerate values are duplicated`, () => {
+    it(`should throw error if the enum is empty or the some of enum values are duplicated`, () => {
       [
         {
-          definition: { enumerate: [] },
+          definition: { enum: [] },
           expected: EmptyError,
         },
         {
-          definition: { enumerate: ["foo", "foo", "bar"] },
+          definition: { enum: ["foo", "foo", "bar"] },
           expected: DuplicationError,
         },
         {
-          definition: { enumerate: ["foo", "bar", "foo"] },
+          definition: { enum: ["foo", "bar", "foo"] },
           expected: DuplicationError,
         },
         {
-          definition: { enumerate: ["bar", "foo", "foo"] },
+          definition: { enum: ["bar", "foo", "foo"] },
           expected: DuplicationError,
         },
         {
-          definition: { enumerate: ["foo", "foo", "foo"] },
+          definition: { enum: ["foo", "foo", "foo"] },
           expected: DuplicationError,
         },
       ].forEach(({definition, expected}) => {
@@ -42,9 +42,9 @@ describe("EnumValidator", () => {
 
   describe("validate()", () => {
 
-    it(`should be valid if the input value exists in the enumerate values`, () => {
+    it(`should be valid if the input value exists in the enum values`, () => {
       const definition = {
-        enumerate: [
+        enum: [
           "foo",
           "bar",
           "baz",
