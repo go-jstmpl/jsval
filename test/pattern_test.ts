@@ -39,7 +39,7 @@ describe("PatternValidator", () => {
       [
         {
           input: "1234567",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "abcdefg",

@@ -32,15 +32,15 @@ describe("MaxItemsValidator", () => {
       [
         {
           input: [1, 2],
-          expected: undefined,
+          expected: null,
         },
         {
           input: [1, 2, 3],
-          expected: undefined,
+          expected: null,
         },
         {
           input: ["a", "b"],
-          expected: undefined,
+          expected: null,
         },
         {
           input: [1, 2, 3, 4],
@@ -77,7 +77,7 @@ describe("MaxItemsValidator", () => {
           input: {
             length: 3,
           },
-          expected: undefined,
+          expected: null,
         },
         {
           input: {
@@ -92,7 +92,7 @@ describe("MaxItemsValidator", () => {
         },
         {
           input: new HasLengthProperty([1, 2, 3]),
-          expected: undefined,
+          expected: null,
         },
         {
           input: new HasLengthProperty([1, 2, 3, 4]),
@@ -103,7 +103,7 @@ describe("MaxItemsValidator", () => {
         },
         {
           input: new HasLengthGetter([1, 2, 3]),
-          expected: undefined,
+          expected: null,
         },
         {
           input: new HasLengthGetter([1, 2, 3, 4]),

@@ -16,11 +16,11 @@ describe("MaximumValidator", () => {
         [
           {
             input: 99,
-            expected: undefined,
+            expected: null,
           },
           {
             input: 100,
-            expected: undefined,
+            expected: null,
           },
           {
             input: 101,
@@ -48,7 +48,7 @@ describe("MaximumValidator", () => {
         [
           {
             input: 99,
-            expected: undefined,
+            expected: null,
           },
           {
             input: 100,

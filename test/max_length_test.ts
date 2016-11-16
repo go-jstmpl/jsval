@@ -32,11 +32,11 @@ describe("MaxLengthValidator", () => {
       [
         {
           input: "ab",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "abc",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "abcd",
