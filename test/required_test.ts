@@ -60,7 +60,31 @@ describe("RequiredValidator", () => {
             bar: 456,
             hoge: 789,
           },
-          expected: undefined,
+          expected: null,
+        },
+        {
+          input: {
+            foo: 123,
+            bar: 456,
+            hoge: 0,
+          },
+          expected: null,
+        },
+        {
+          input: {
+            foo: 123,
+            bar: 456,
+            hoge: "",
+          },
+          expected: null,
+        },
+        {
+          input: {
+            foo: 123,
+            bar: 456,
+            hoge: false,
+          },
+          expected: null,
         },
         {
           input: {
@@ -71,6 +95,21 @@ describe("RequiredValidator", () => {
             input: {
               foo: 123,
               bar: 456,
+            },
+            definition,
+          },
+        },
+        {
+          input: {
+            foo: 123,
+            bar: 456,
+            hoge: null,
+          },
+          expected: {
+            input: {
+              foo: 123,
+              bar: 456,
+              hoge: null,
             },
             definition,
           },
