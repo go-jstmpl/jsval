@@ -39,11 +39,11 @@ describe("MinLengthValidator", () => {
         },
         {
           input: "abc",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "abcd",
-          expected: undefined,
+          expected: null,
         },
       ].forEach(({input, expected}) => {
         const actual = validator.validate(input);

@@ -54,15 +54,15 @@ describe("EnumValidator", () => {
       [
         {
           input: "foo",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "bar",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "baz",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "qux",

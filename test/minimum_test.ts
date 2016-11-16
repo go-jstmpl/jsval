@@ -23,11 +23,11 @@ describe("MinimumValidator", () => {
           },
           {
             input: 100,
-            expected: undefined,
+            expected: null,
           },
           {
             input: 101,
-            expected: undefined,
+            expected: null,
           },
         ].forEach(({input, expected}) => {
           const actual = validator.validate(input);
@@ -62,7 +62,7 @@ describe("MinimumValidator", () => {
           },
           {
             input: 101,
-            expected: undefined,
+            expected: null,
           },
         ].forEach(({input, expected}) => {
           const actual = validator.validate(input);

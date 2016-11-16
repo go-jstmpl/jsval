@@ -39,15 +39,15 @@ describe("MinItemsValidator", () => {
         },
         {
           input: [1, 2, 3],
-          expected: undefined,
+          expected: null,
         },
         {
           input: [1, 2, 3, 4],
-          expected: undefined,
+          expected: null,
         },
         {
           input: ["a", "b", "c", "d"],
-          expected: undefined,
+          expected: null,
         },
       ].forEach(({input, expected}) => {
         const actual = validator.validate(input);
@@ -88,7 +88,7 @@ describe("MinItemsValidator", () => {
           input: {
             length: 3,
           },
-          expected: undefined,
+          expected: null,
         },
         {
           input: new HasLengthProperty([1, 2]),
@@ -99,7 +99,7 @@ describe("MinItemsValidator", () => {
         },
         {
           input: new HasLengthProperty([1, 2, 3]),
-          expected: undefined,
+          expected: null,
         },
         {
           input: new HasLengthGetter([1, 2]),
@@ -110,7 +110,7 @@ describe("MinItemsValidator", () => {
         },
         {
           input: new HasLengthGetter([1, 2, 3]),
-          expected: undefined,
+          expected: null,
         },
       ].forEach(({input, expected}) => {
         const actual = validator.validate(input);

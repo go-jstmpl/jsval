@@ -14,39 +14,39 @@ describe("FormatValidator", () => {
       [
         {
           input: "2016-10-07T16:58:37Z",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37+09:00",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37-09:00",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37.091Z",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37.091+09:00",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37.091-09:00",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37.091232123Z",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37.091232123+09:00",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "2016-10-07T16:58:37.091232123-09:00",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "209385790284750",
@@ -68,7 +68,7 @@ describe("FormatValidator", () => {
       [
         {
           input: "foo@bar.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "foobar.com",
@@ -104,19 +104,19 @@ describe("FormatValidator", () => {
       [
         {
           input: "example",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "example.example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "example-example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "example@example.com",
@@ -159,23 +159,23 @@ describe("FormatValidator", () => {
       [
         {
           input: "https://example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "https://example.com/foo/bar",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "http://example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "http://example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "ftp://example.com",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "foobar.com",
@@ -197,127 +197,127 @@ describe("FormatValidator", () => {
       [
         {
           input: "0Aa",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0aA",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "A0a",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "Aa0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "a0A",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "aA0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!0Aa",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!0aA",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!A0a",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!Aa0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!a0A",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!aA0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0!Aa",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0!aA",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0A!a",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0Aa!",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0a!A",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "0aA!",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "A!0a",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "A!a0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "A0!a",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "A0a!",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "Aa!0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "Aa0!",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "a!0A",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "a!A0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "a0!A",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "a0A!",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "aA!0",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "aA0!",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
-          expected: undefined,
+          expected: null,
         },
         {
           input: "password",
