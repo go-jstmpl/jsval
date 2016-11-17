@@ -8,6 +8,7 @@ import {
   IMinLengthValidatorDefinition,
   IMinimumValidatorDefinition,
   IPatternValidatorDefinition,
+  IPresentValidatorDefinition,
   IRequiredValidatorDefinition,
 } from "./";
 
@@ -30,6 +31,7 @@ export type IValidatorDefinition = (
   IMinLengthValidatorDefinition |
   IMinimumValidatorDefinition |
   IPatternValidatorDefinition |
+  IPresentValidatorDefinition |
   IRequiredValidatorDefinition
 );
 

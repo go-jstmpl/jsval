@@ -9,4 +9,5 @@ export * from "./validators/min_length";
 export * from "./validators/min_items";
 export * from "./validators/minimum";
 export * from "./validators/pattern";
+export * from "./validators/present";
 export * from "./validators/required";

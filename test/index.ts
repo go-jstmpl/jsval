@@ -7,4 +7,5 @@ export * from "./min_length_test";
 export * from "./min_items_test";
 export * from "./minimum_test";
 export * from "./pattern_test";
+export * from "./present_test";
 export * from "./required_test";
