@@ -1,6 +1,6 @@
 {
   "name": "jsval",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Validators based on JSON Schema in TypeScript",
   "main": "lib/index.js",
   "directories": {
