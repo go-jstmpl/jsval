@@ -11,9 +11,14 @@ import {
 export interface IPresentValidatorDefinition extends IBaseValidatorDefinition {}
 
 export class PresentValidator implements IValidator<any, IPresentValidatorDefinition> {
-  private static rWhiteSpace: RegExp = /^[\t\n\v\f\r ]*$/;
+  /**
+   * Based on `[:space:]` defined in POSIX character classes.
+   */
+  private static rSpace: RegExp = /^[\t\n\v\f\r ]*$/;
 
-  constructor(public definition: IPresentValidatorDefinition) {}
+  constructor(public definition: IPresentValidatorDefinition) {
+    this.definition.type = "present";
+  }
 
   public validate(input: any): IValidationError<any, IPresentValidatorDefinition> {
     const invalid = {
@@ -22,7 +27,7 @@ export class PresentValidator implements IValidator<any, IPresentValidatorDefini
     };
     if (
       (input == null) ||
-      (isString(input) && PresentValidator.rWhiteSpace.test(input)) ||
+      (isString(input) && PresentValidator.rSpace.test(input)) ||
       (isArray(input) && input.length === 0) ||
       (isObject(input) && Object.keys(input).length === 0)
     ) {
