@@ -13,7 +13,9 @@ export interface IPresentValidatorDefinition extends IBaseValidatorDefinition {}
 export class PresentValidator implements IValidator<any, IPresentValidatorDefinition> {
   private static rWhiteSpace: RegExp = /^[\t\n\v\f\r ]*$/;
 
-  constructor(public definition: IPresentValidatorDefinition) {}
+  constructor(public definition: IPresentValidatorDefinition) {
+    this.definition.type = "present";
+  }
 
   public validate(input: any): IValidationError<any, IPresentValidatorDefinition> {
     const invalid = {

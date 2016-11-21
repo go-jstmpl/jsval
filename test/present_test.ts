@@ -6,7 +6,9 @@ describe("PresentValidator", () => {
   describe("validate", () => {
 
     it(`should be invalid if the input is undefined or null`, () => {
-      const definition = {};
+      const definition = {
+        type: "present",
+      };
       const validator = new PresentValidator({});
       [
         {
@@ -30,7 +32,9 @@ describe("PresentValidator", () => {
     });
 
     it(`should be invalid if the input consisting only white space`, () => {
-      const definition = {};
+      const definition = {
+        type: "present",
+      };
       const validator = new PresentValidator({});
       [
         {
@@ -111,7 +115,9 @@ describe("PresentValidator", () => {
     });
 
     it(`should be invalid if the input is empty array`, () => {
-      const definition = {};
+      const definition = {
+        type: "present",
+      };
       const validator = new PresentValidator({});
       [
         {
@@ -132,7 +138,9 @@ describe("PresentValidator", () => {
     });
 
     it(`should be invalid if the input is empty object`, () => {
-      const definition = {};
+      const definition = {
+        type: "present",
+      };
       const validator = new PresentValidator({});
       [
         {
