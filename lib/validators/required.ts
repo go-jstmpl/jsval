@@ -36,7 +36,7 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
 
     for (let i = 0; i < required.length; i++) {
       const key = required[i];
-      if (input[key] == null) {
+      if (input[key] == null || input[key] === "") {
         return {
           definition: this.definition,
           input,

@@ -64,6 +64,44 @@ describe("RequiredValidator", () => {
         },
         {
           input: {
+            foo: "aaa",
+            bar: "bbb",
+            hoge: "ccc",
+          },
+          expected: undefined,
+        },
+        {
+          input: {
+            foo: null,
+            bar: null,
+            hoge: null,
+          },
+          expected: {
+            input: {
+              foo: null,
+              bar: null,
+              hoge: null,
+            },
+            definition,
+          },
+        },
+        {
+          input: {
+            foo: "",
+            bar: "",
+            hoge: "",
+          },
+          expected: {
+            input: {
+              foo: "",
+              bar: "",
+              hoge: "",
+            },
+            definition,
+          },
+        },
+        {
+          input: {
             foo: 123,
             bar: 456,
             hoge: 0,
