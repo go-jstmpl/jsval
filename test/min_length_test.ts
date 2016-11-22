@@ -24,6 +24,32 @@ describe("MinLengthValidator", () => {
 
   describe("validate()", () => {
 
+    it(`should be valid if the input value is null`, () => {
+      const definition = {
+        minLength: 3,
+      };
+      const validator = new MinLengthValidator(definition);
+      [
+        {
+          input: null,
+          expected: {
+            input: null,
+            definition,
+          },
+        },
+        {
+          input: undefined,
+          expected: {
+            input: undefined,
+            definition,
+          },
+        },
+      ].forEach(({input, expected}) => {
+        const actual = validator.validate(input);
+        assert.deepEqual(actual, expected);
+      });
+    });
+
     it(`should be valid if the length of the input value is greater than the minimum length`, () => {
       const definition = {
         minLength: 3,

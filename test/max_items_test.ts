@@ -24,6 +24,32 @@ describe("MaxItemsValidator", () => {
 
   describe("validate()", () => {
 
+    it(`should be valid if the input value is null`, () => {
+      const definition = {
+        maxItems: 3,
+      };
+      const validator = new MaxItemsValidator(definition);
+      [
+        {
+          input: null,
+          expected: {
+            input: null,
+            definition,
+          },
+        },
+        {
+          input: undefined,
+          expected: {
+            input: undefined,
+            definition,
+          },
+        },
+      ].forEach(({input, expected}) => {
+        const actual = validator.validate(input);
+        assert.deepEqual(actual, expected);
+      });
+    });
+
     it(`should be valid if the size of the input is less than, or or equal to, the value of maxItems`, () => {
       const definition = {
         maxItems: 3,

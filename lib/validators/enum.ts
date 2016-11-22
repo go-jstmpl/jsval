@@ -31,15 +31,19 @@ export class EnumValidator<T> implements IValidator<{}, IEnumValidatorDefinition
   }
 
   public validate(input: T): IValidationError<T, IEnumValidatorDefinition<T>> {
+    const invalid = {
+      definition: this.definition,
+      input,
+    };
+    if (input == null) {
+      return invalid;
+    }
     for (let i = 0; i < this.definition.enum.length; i++) {
       const e = this.definition.enum[i];
       if (e === input) {
         return;
       }
     }
-    return {
-      definition: this.definition,
-      input,
-    };
+    return invalid;
   }
 }

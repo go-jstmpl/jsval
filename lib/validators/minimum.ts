@@ -15,22 +15,24 @@ export class MinimumValidator implements IValidator<number, IMinimumValidatorDef
   }
 
   public validate(input: number): IValidationError<number, IMinimumValidatorDefinition> {
+    const invalid = {
+      definition: this.definition,
+      input,
+    };
+    if (input == null) {
+      return invalid;
+    }
+
     if (!this.definition.exclusive) {
       if (input >= this.definition.minimum) {
         return;
       }
-      return {
-        input,
-        definition: this.definition,
-      };
+      return invalid;
     }
 
     if (input > this.definition.minimum) {
       return;
     }
-    return {
-      input,
-      definition: this.definition,
-    };
+    return invalid;
   }
 }
