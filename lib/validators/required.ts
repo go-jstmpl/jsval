@@ -7,6 +7,7 @@ import {
   IValidationError,
   IValidator,
 } from "../interfaces";
+import {PresentValidator} from "./present";
 
 export interface IRequiredValidatorDefinition extends IBaseValidatorDefinition {
   required: string[];
@@ -42,9 +43,11 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
     }
 
     const {required} = this.definition;
+    const present = new PresentValidator({});
     for (let i = 0; i < required.length; i++) {
       const key = required[i];
-      if (input[key] == null) {
+      const presentError = present.validate(input[key]);
+      if (presentError != null) {
         return invalid;
       }
     }
