@@ -42,6 +42,36 @@ describe("EnumValidator", () => {
 
   describe("validate()", () => {
 
+    it(`should be valid if the input value is null`, () => {
+      const definition = {
+        enum: [
+          "foo",
+          "bar",
+          "baz",
+        ],
+      };
+      const validator = new EnumValidator(definition);
+      [
+        {
+          input: null,
+          expected: {
+            input: null,
+            definition,
+          },
+        },
+        {
+          input: undefined,
+          expected: {
+            input: undefined,
+            definition,
+          },
+        },
+      ].forEach(({input, expected}) => {
+        const actual = validator.validate(input);
+        assert.deepEqual(actual, expected);
+      });
+    });
+
     it(`should be valid if the input value exists in the enum values`, () => {
       const definition = {
         enum: [

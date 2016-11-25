@@ -44,6 +44,36 @@ describe("RequiredValidator", () => {
 
   describe("validate()", () => {
 
+    it(`should be valid if the input value is null`, () => {
+      const definition = {
+        required: [
+          "foo",
+          "bar",
+          "hoge",
+        ],
+      };
+      const validator = new RequiredValidator(definition);
+      [
+        {
+          input: null,
+          expected: {
+            input: null,
+            definition,
+          },
+        },
+        {
+          input: undefined,
+          expected: {
+            input: undefined,
+            definition,
+          },
+        },
+      ].forEach(({input, expected}) => {
+        const actual = validator.validate(input);
+        assert.deepEqual(actual, expected);
+      });
+    });
+
     it(`should be valid if the input has required keys`, () => {
       const definition = {
         required: [
@@ -74,14 +104,6 @@ describe("RequiredValidator", () => {
           input: {
             foo: 123,
             bar: 456,
-            hoge: "",
-          },
-          expected: null,
-        },
-        {
-          input: {
-            foo: 123,
-            bar: 456,
             hoge: false,
           },
           expected: null,
@@ -95,6 +117,21 @@ describe("RequiredValidator", () => {
             input: {
               foo: 123,
               bar: 456,
+            },
+            definition,
+          },
+        },
+        {
+          input: {
+            foo: 123,
+            bar: 456,
+            hoge: "",
+          },
+          expected: {
+            input: {
+              foo: 123,
+              bar: 456,
+              hoge: "",
             },
             definition,
           },

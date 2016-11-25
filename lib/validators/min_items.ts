@@ -22,12 +22,16 @@ export class MinItemsValidator implements IValidator<any, IMinItemsValidatorDefi
   }
 
   public validate(input: IHasLength): IValidationError<any, IMinItemsValidatorDefinition> {
+    const err = {
+      definition: this.definition,
+      input,
+    };
+    if (input == null) {
+      return err;
+    }
     if (input.length >= this.definition.minItems) {
       return;
     }
-    return {
-      input,
-      definition: this.definition,
-    };
+    return err;
   }
 }

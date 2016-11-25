@@ -24,6 +24,32 @@ describe("MaxLengthValidator", () => {
 
   describe("validate()", () => {
 
+    it(`should be valid if the input value is null`, () => {
+      const definition = {
+        maxLength: 3,
+      };
+      const validator = new MaxLengthValidator(definition);
+      [
+        {
+          input: null,
+          expected: {
+            input: null,
+            definition,
+          },
+        },
+        {
+          input: undefined,
+          expected: {
+            input: undefined,
+            definition,
+          },
+        },
+      ].forEach(({input, expected}) => {
+        const actual = validator.validate(input);
+        assert.deepEqual(actual, expected);
+      });
+    });
+
     it(`should be valid if the length of the input value is lower than the max length`, () => {
       const definition = {
         maxLength: 3,

@@ -32,6 +32,15 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
   }
 
   public validate(input: string): IValidationError<string, IFormatValidatorDefinition> {
+    const err = {
+      definition: this.definition,
+      input,
+    };
+
+    if (input == null) {
+      return err;
+    }
+
     const {format} = this.definition;
     switch (format) {
       case "date-time": {
@@ -66,10 +75,7 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
       }
 
     }
-    return {
-      definition: this.definition,
-      input,
-    };
+    return err;
   }
 
   // stolen from https://golang.org/src/net/dnsclient.go

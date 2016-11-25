@@ -20,12 +20,16 @@ export class MinLengthValidator implements IValidator<string, IMinLengthValidato
   }
 
   public validate(input: string): IValidationError<string, IMinLengthValidatorDefinition> {
+    const err = {
+      definition: this.definition,
+      input,
+    };
+    if (input == null) {
+      return err;
+    }
     if (input.length >= this.definition.minLength) {
       return;
     }
-    return {
-      input,
-      definition: this.definition,
-    };
+    return err;
   }
 }
