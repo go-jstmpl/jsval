@@ -32,13 +32,13 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
   }
 
   public validate(input: string): IValidationError<string, IFormatValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
 
     if (input == null) {
-      return invalid;
+      return err;
     }
 
     const {format} = this.definition;
@@ -75,7 +75,7 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
       }
 
     }
-    return invalid;
+    return err;
   }
 
   // stolen from https://golang.org/src/net/dnsclient.go

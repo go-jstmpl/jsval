@@ -20,16 +20,16 @@ export class MaxLengthValidator implements IValidator<string, IMaxLengthValidato
   }
 
   public validate(input: string): IValidationError<string, IMaxLengthValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
     if (input == null) {
-      return invalid;
+      return err;
     }
     if (input.length <= this.definition.maxLength) {
       return;
     }
-    return invalid;
+    return err;
   }
 }

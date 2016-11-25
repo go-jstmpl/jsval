@@ -22,16 +22,16 @@ export class MaxItemsValidator implements IValidator<any, IMaxItemsValidatorDefi
   }
 
   public validate(input: IHasLength): IValidationError<any, IMaxItemsValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
     if (input == null) {
-      return invalid;
+      return err;
     }
     if (input.length <= this.definition.maxItems) {
       return;
     }
-    return invalid;
+    return err;
   }
 }

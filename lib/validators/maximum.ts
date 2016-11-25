@@ -15,24 +15,24 @@ export class MaximumValidator implements IValidator<number, IMaximumValidatorDef
   }
 
   public validate(input: number): IValidationError<number, IMaximumValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
     if (input == null) {
-      return invalid;
+      return err;
     }
 
     if (!this.definition.exclusive) {
       if (input <= this.definition.maximum) {
         return;
       }
-      return invalid;
+      return err;
     }
 
     if (input < this.definition.maximum) {
       return;
     }
-    return invalid;
+    return err;
   }
 }

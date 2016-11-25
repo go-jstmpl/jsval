@@ -21,7 +21,7 @@ export class PresentValidator implements IValidator<any, IPresentValidatorDefini
   }
 
   public validate(input: any): IValidationError<any, IPresentValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
@@ -31,7 +31,7 @@ export class PresentValidator implements IValidator<any, IPresentValidatorDefini
       (isArray(input) && input.length === 0) ||
       (isObject(input) && Object.keys(input).length === 0)
     ) {
-      return invalid;
+      return err;
     }
     return;
   }

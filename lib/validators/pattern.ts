@@ -29,16 +29,16 @@ export class PatternValidator implements IValidator<string, IPatternValidatorDef
   }
 
   public validate(input: string): IValidationError<string, IPatternValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
     if (input == null) {
-      return invalid;
+      return err;
     }
     if (this.regExp.test(input)) {
       return;
     }
-    return invalid;
+    return err;
   }
 }

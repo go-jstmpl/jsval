@@ -33,13 +33,13 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
   }
 
   public validate(input: any): IValidationError<any, IRequiredValidatorDefinition> {
-    const invalid = {
+    const err = {
       definition: this.definition,
       input,
     };
 
     if (input == null) {
-      return invalid;
+      return err;
     }
 
     const {required} = this.definition;
@@ -48,7 +48,7 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
       const key = required[i];
       const presentError = present.validate(input[key]);
       if (presentError != null) {
-        return invalid;
+        return err;
       }
     }
     return;
