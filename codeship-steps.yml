@@ -1,0 +1,5 @@
+- type: parallel
+  steps:
+    - name: Test Node
+      service: node
+      command: sh -c "npm run lint && npm run build && npm test"
