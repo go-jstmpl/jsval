@@ -38,8 +38,7 @@ export class EnumValidator<T> implements IValidator<{}, IEnumValidatorDefinition
     if (input == null) {
       return err;
     }
-    for (let i = 0; i < this.definition.enum.length; i++) {
-      const e = this.definition.enum[i];
+    for (const e of this.definition.enum) {
       if (e === input) {
         return;
       }

@@ -44,8 +44,7 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
 
     const {required} = this.definition;
     const present = new PresentValidator({});
-    for (let i = 0; i < required.length; i++) {
-      const key = required[i];
+    for (const key of required) {
       const presentError = present.validate(input[key]);
       if (presentError != null) {
         return err;

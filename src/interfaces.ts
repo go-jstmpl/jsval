@@ -1,16 +1,16 @@
 import {
   IEnumValidatorDefinition,
   IFormatValidatorDefinition,
+  IMaximumValidatorDefinition,
   IMaxItemsValidatorDefinition,
   IMaxLengthValidatorDefinition,
-  IMaximumValidatorDefinition,
+  IMinimumValidatorDefinition,
   IMinItemsValidatorDefinition,
   IMinLengthValidatorDefinition,
-  IMinimumValidatorDefinition,
   IPatternValidatorDefinition,
   IPresentValidatorDefinition,
   IRequiredValidatorDefinition,
-} from "./";
+} from ".";
 
 export interface IValidator<T, U> {
   definition: U;

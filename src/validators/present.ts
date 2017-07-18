@@ -1,6 +1,8 @@
-import * as isArray from "lodash/isArray";
-import * as isObject from "lodash/isObject";
-import * as isString from "lodash/isString";
+import {
+  isArray,
+  isObject,
+  isString,
+} from "lodash";
 
 import {
   IBaseValidatorDefinition,
@@ -8,7 +10,7 @@ import {
   IValidator,
 } from "../interfaces";
 
-export interface IPresentValidatorDefinition extends IBaseValidatorDefinition {}
+export type IPresentValidatorDefinition = IBaseValidatorDefinition;
 
 export class PresentValidator implements IValidator<any, IPresentValidatorDefinition> {
   /**
