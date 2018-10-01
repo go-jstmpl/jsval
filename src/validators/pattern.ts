@@ -4,7 +4,6 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -12,7 +11,7 @@ export interface IPatternValidatorDefinition extends IBaseValidatorDefinition {
   pattern: string;
 }
 
-export class PatternValidator implements IValidator<string, IPatternValidatorDefinition> {
+export class PatternValidator implements IValidator<string | null, IPatternValidatorDefinition> {
   private regExp: RegExp;
 
   constructor(public definition: IPatternValidatorDefinition) {
@@ -28,7 +27,7 @@ export class PatternValidator implements IValidator<string, IPatternValidatorDef
     }
   }
 
-  public validate(input: string): IValidationError<string, IPatternValidatorDefinition> {
+  public validate(input: string | null) {
     const err = {
       definition: this.definition,
       input,
@@ -37,7 +36,7 @@ export class PatternValidator implements IValidator<string, IPatternValidatorDef
       return err;
     }
     if (this.regExp.test(input)) {
-      return;
+      return null;
     }
     return err;
   }

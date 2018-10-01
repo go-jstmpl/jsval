@@ -4,7 +4,6 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -12,7 +11,7 @@ export interface IEnumValidatorDefinition<T> extends IBaseValidatorDefinition {
   enum: T[];
 }
 
-export class EnumValidator<T> implements IValidator<{}, IEnumValidatorDefinition<T>> {
+export class EnumValidator<T> implements IValidator<T | null, IEnumValidatorDefinition<T>> {
   constructor(public definition: IEnumValidatorDefinition<T>) {
     this.definition.type = "enum";
     const len = this.definition.enum.length;
@@ -30,7 +29,7 @@ export class EnumValidator<T> implements IValidator<{}, IEnumValidatorDefinition
     }
   }
 
-  public validate(input: T): IValidationError<T, IEnumValidatorDefinition<T>> {
+  public validate(input: T | null) {
     const err = {
       definition: this.definition,
       input,
@@ -40,7 +39,7 @@ export class EnumValidator<T> implements IValidator<{}, IEnumValidatorDefinition
     }
     for (const e of this.definition.enum) {
       if (e === input) {
-        return;
+        return null;
       }
     }
     return err;

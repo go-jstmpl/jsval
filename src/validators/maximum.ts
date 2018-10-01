@@ -1,6 +1,5 @@
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -9,12 +8,12 @@ export interface IMaximumValidatorDefinition extends IBaseValidatorDefinition {
   exclusive: boolean;
 }
 
-export class MaximumValidator implements IValidator<number, IMaximumValidatorDefinition> {
+export class MaximumValidator implements IValidator<number | null, IMaximumValidatorDefinition> {
   constructor(public definition: IMaximumValidatorDefinition) {
     this.definition.type = "maximum";
   }
 
-  public validate(input: number): IValidationError<number, IMaximumValidatorDefinition> {
+  public validate(input: number | null) {
     const err = {
       definition: this.definition,
       input,
@@ -25,13 +24,13 @@ export class MaximumValidator implements IValidator<number, IMaximumValidatorDef
 
     if (!this.definition.exclusive) {
       if (input <= this.definition.maximum) {
-        return;
+        return null;
       }
       return err;
     }
 
     if (input < this.definition.maximum) {
-      return;
+      return null;
     }
     return err;
   }
