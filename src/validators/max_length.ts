@@ -3,7 +3,6 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -11,7 +10,7 @@ export interface IMaxLengthValidatorDefinition extends IBaseValidatorDefinition 
   maxLength: number;
 }
 
-export class MaxLengthValidator implements IValidator<string, IMaxLengthValidatorDefinition> {
+export class MaxLengthValidator implements IValidator<string | null, IMaxLengthValidatorDefinition> {
   constructor(public definition: IMaxLengthValidatorDefinition) {
     this.definition.type = "max_length";
     if (this.definition.maxLength < 0) {
@@ -19,7 +18,7 @@ export class MaxLengthValidator implements IValidator<string, IMaxLengthValidato
     }
   }
 
-  public validate(input: string): IValidationError<string, IMaxLengthValidatorDefinition> {
+  public validate(input: string | null) {
     const err = {
       definition: this.definition,
       input,
@@ -28,7 +27,7 @@ export class MaxLengthValidator implements IValidator<string, IMaxLengthValidato
       return err;
     }
     if (input.length <= this.definition.maxLength) {
-      return;
+      return null;
     }
     return err;
   }

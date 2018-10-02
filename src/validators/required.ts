@@ -4,7 +4,6 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 import {PresentValidator} from "./present";
@@ -13,7 +12,7 @@ export interface IRequiredValidatorDefinition extends IBaseValidatorDefinition {
   required: string[];
 }
 
-export class RequiredValidator implements IValidator<any, IRequiredValidatorDefinition> {
+export class RequiredValidator implements IValidator<any | null, IRequiredValidatorDefinition> {
   constructor(public definition: IRequiredValidatorDefinition) {
     this.definition.type = "required";
     const {required} = this.definition;
@@ -32,7 +31,7 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
     }
   }
 
-  public validate(input: any): IValidationError<any, IRequiredValidatorDefinition> {
+  public validate(input: any | null) {
     const err = {
       definition: this.definition,
       input,
@@ -50,6 +49,6 @@ export class RequiredValidator implements IValidator<any, IRequiredValidatorDefi
         return err;
       }
     }
-    return;
+    return null;
   }
 }

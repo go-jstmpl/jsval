@@ -14,7 +14,7 @@ import {
 
 export interface IValidator<T, U> {
   definition: U;
-  validate: (input: T) => IValidationError<T, U>;
+  validate: (input: T) => IValidationError<T, U> | null;
 }
 
 export interface IBaseValidatorDefinition {

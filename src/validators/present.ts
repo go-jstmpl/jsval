@@ -6,13 +6,12 @@ import {
 
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
 export type IPresentValidatorDefinition = IBaseValidatorDefinition;
 
-export class PresentValidator implements IValidator<any, IPresentValidatorDefinition> {
+export class PresentValidator<T> implements IValidator<T | null, IPresentValidatorDefinition> {
   /**
    * Based on `[:space:]` defined in POSIX character classes.
    */
@@ -22,7 +21,7 @@ export class PresentValidator implements IValidator<any, IPresentValidatorDefini
     this.definition.type = "present";
   }
 
-  public validate(input: any): IValidationError<any, IPresentValidatorDefinition> {
+  public validate(input: T | null) {
     const err = {
       definition: this.definition,
       input,
@@ -35,6 +34,6 @@ export class PresentValidator implements IValidator<any, IPresentValidatorDefini
     ) {
       return err;
     }
-    return;
+    return null;
   }
 }

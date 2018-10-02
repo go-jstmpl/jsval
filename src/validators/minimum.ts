@@ -1,6 +1,5 @@
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -9,12 +8,12 @@ export interface IMinimumValidatorDefinition extends IBaseValidatorDefinition {
   exclusive: boolean;
 }
 
-export class MinimumValidator implements IValidator<number, IMinimumValidatorDefinition> {
+export class MinimumValidator implements IValidator<number | null, IMinimumValidatorDefinition> {
   constructor(public definition: IMinimumValidatorDefinition) {
     this.definition.type = "minimum";
   }
 
-  public validate(input: number): IValidationError<number, IMinimumValidatorDefinition> {
+  public validate(input: number | null) {
     const err = {
       definition: this.definition,
       input,
@@ -25,13 +24,13 @@ export class MinimumValidator implements IValidator<number, IMinimumValidatorDef
 
     if (!this.definition.exclusive) {
       if (input >= this.definition.minimum) {
-        return;
+        return null;
       }
       return err;
     }
 
     if (input > this.definition.minimum) {
-      return;
+      return null;
     }
     return err;
   }

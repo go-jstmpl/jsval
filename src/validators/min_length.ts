@@ -3,7 +3,6 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -11,7 +10,7 @@ export interface IMinLengthValidatorDefinition extends IBaseValidatorDefinition 
   minLength: number;
 }
 
-export class MinLengthValidator implements IValidator<string, IMinLengthValidatorDefinition> {
+export class MinLengthValidator implements IValidator<string | null, IMinLengthValidatorDefinition> {
   constructor(public definition: IMinLengthValidatorDefinition) {
     this.definition.type = "min_length";
     if (this.definition.minLength < 0) {
@@ -19,7 +18,7 @@ export class MinLengthValidator implements IValidator<string, IMinLengthValidato
     }
   }
 
-  public validate(input: string): IValidationError<string, IMinLengthValidatorDefinition> {
+  public validate(input: string | null) {
     const err = {
       definition: this.definition,
       input,
@@ -28,7 +27,7 @@ export class MinLengthValidator implements IValidator<string, IMinLengthValidato
       return err;
     }
     if (input.length >= this.definition.minLength) {
-      return;
+      return null;
     }
     return err;
   }

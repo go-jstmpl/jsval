@@ -3,7 +3,6 @@ import {
 } from "../errors";
 import {
   IBaseValidatorDefinition,
-  IValidationError,
   IValidator,
 } from "../interfaces";
 
@@ -11,7 +10,7 @@ export interface IFormatValidatorDefinition extends IBaseValidatorDefinition {
   format: string;
 }
 
-export class FormatValidator implements IValidator<string, IFormatValidatorDefinition> {
+export class FormatValidator implements IValidator<string | null, IFormatValidatorDefinition> {
   private static rDateTime: RegExp = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.?\d{1,9})?(?:[+-]\d{2}:\d{2}|Z)/;
   private static rEmail: RegExp = /^.+@.+\..+$/;
   private static rUri: RegExp = /^[0-9a-zA-Z]+:\/\/.+$/;
@@ -31,7 +30,7 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
     }
   }
 
-  public validate(input: string): IValidationError<string, IFormatValidatorDefinition> {
+  public validate(input: string | null) {
     const err = {
       definition: this.definition,
       input,
@@ -45,31 +44,31 @@ export class FormatValidator implements IValidator<string, IFormatValidatorDefin
     switch (format) {
       case "date-time": {
         if (FormatValidator.rDateTime.test(input)) {
-          return;
+          return null;
         }
         break;
       }
       case "email": {
         if (FormatValidator.rEmail.test(input)) {
-          return;
+          return null;
         }
         break;
       }
       case "hostname": {
         if (this.isHostName(input)) {
-          return;
+          return null;
         }
         break;
       }
       case "uri": {
         if (FormatValidator.rUri.test(input)) {
-          return;
+          return null;
         }
         break;
       }
       case "password-0Aa": {
         if (this.isPassword0Aa(input)) {
-          return;
+          return null;
         }
         break;
       }
