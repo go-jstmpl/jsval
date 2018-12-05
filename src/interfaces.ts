@@ -39,7 +39,3 @@ export interface IValidationError<T, U> {
   definition: U;
   input: T;
 }
-
-export interface IHasLength {
-  length: number;
-}

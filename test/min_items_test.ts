@@ -81,69 +81,6 @@ describe("MinItemsValidator", () => {
       });
     });
 
-    it(`should validate object which has length property`, () => {
-      class HasLengthProperty {
-        public length: number;
-        constructor(private items: any[]) {
-          this.length = items.length;
-        }
-      }
-
-      class HasLengthGetter {
-        public get length(): number { return this.items.length; }
-        constructor(private items: any[]) {}
-      }
-
-      const definition = {
-        minItems: 3,
-      };
-      const validator = new MinItemsValidator(definition);
-      [
-        {
-          input: {
-            length: 2,
-          },
-          expected: {
-            input: {
-              length: 2,
-            },
-            definition,
-          },
-        },
-        {
-          input: {
-            length: 3,
-          },
-          expected: null,
-        },
-        {
-          input: new HasLengthProperty([1, 2]),
-          expected: {
-            input: new HasLengthProperty([1, 2]),
-            definition,
-          },
-        },
-        {
-          input: new HasLengthProperty([1, 2, 3]),
-          expected: null,
-        },
-        {
-          input: new HasLengthGetter([1, 2]),
-          expected: {
-            input: new HasLengthGetter([1, 2]),
-            definition,
-          },
-        },
-        {
-          input: new HasLengthGetter([1, 2, 3]),
-          expected: null,
-        },
-      ].forEach(({input, expected}) => {
-        const actual = validator.validate(input);
-        assert.deepEqual(actual, expected);
-      });
-    });
-
   });
 
 });

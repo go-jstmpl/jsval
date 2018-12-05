@@ -1,4 +1,4 @@
-FROM node:8.1.4
+FROM node:11.3.0
 
 WORKDIR /jsval
 COPY package.json package-lock.json ./

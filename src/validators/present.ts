@@ -1,5 +1,4 @@
 import {
-  isArray,
   isObject,
   isString,
 } from "lodash";
@@ -29,7 +28,7 @@ export class PresentValidator<T> implements IValidator<T | null, IPresentValidat
     if (
       (input == null) ||
       (isString(input) && PresentValidator.rSpace.test(input)) ||
-      (isArray(input) && input.length === 0) ||
+      (Array.isArray(input) && input.length === 0) ||
       (isObject(input) && Object.keys(input).length === 0)
     ) {
       return err;
